@@ -6,7 +6,7 @@ export const Inicio = () => {
     return (
         <div className="container mt-2">
 
-          <div style={{display:'flex'}}>
+          <div className="row">
             
             {datoP.map((item) => {
               return(<TarjetaProdcto key={item.id} id={item.id} descripcion={item.descripcion} imagen={item.imagen} precio={item.precio} titulo={item.titulo}/>);

@@ -1,27 +1,27 @@
 [
   {
-    "id":1,
+    "id": 1,
     "imagen": "https://crecos.vteximg.com.br/arquivos/ids/189614-398-398/186598.png?v=637337539202800000",
     "titulo": "Zapato Deportivo",
     "descripcion": "Zapato deportivo de marca",
     "precio": 60
   },
   {
-    "id":2,
+    "id": 2,
     "imagen": "https://bomansport.com/wp-content/uploads/2020/09/Chompa-Retro-Deportivo-Quito.png",
     "titulo": "Chompa Deportiva",
     "descripcion": "Chompa excelente calidad",
     "precio": 200
   },
   {
-    "id":3,
+    "id": 3,
     "imagen": "https://img.fcbayern.com/image/upload/f_auto,q_auto/t_productstage/eCommerce/produkte/25797/kinder-sweathose-classic.png",
     "titulo": "Pantalón Deportivo",
     "descripcion": "Patalón flexible y de excelente calidad",
     "precio": 80
   },
   {
-    "id":4,
+    "id": 4,
     "imagen": "https://static.nike.com/a/images/t_default/z3bz9inia0pblinptyuw/gorra-ajustable-sportswear-aerobill-featherlight-3zTbk4bD.png",
     "titulo": "Gorra Deportiva",
     "descripcion": "Gorra de excelente calidad",

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import luhn from "luhn";
 import { Kushki } from "@kushki/js";
+// @ts-ignore
 import { IMaskInput } from "react-imask";
 import IMask from "imask";
 import { getCardTypeByValue } from "../utils/cardTypes";
@@ -12,6 +13,7 @@ import axios from "axios";
 
 import "normalize.css";
 import "./styles.scss";
+import { DataContext } from "../context/DataContext";
 
 type Inputs = {
   cardNumber: string;
@@ -20,11 +22,17 @@ type Inputs = {
   cvc: string;
 };
 
-const chargeAmount = 49.99;
+
 const chargeCurrency = "USD";
-const KUSHKI_PUBLIC_MERCHANT_ID = "20000000106212540000";
+const KUSHKI_PUBLIC_MERCHANT_ID = "65e23cbfa9224c3c94ba1f33b746e83f";
 
 export default function Tarjeta() {
+    const { productosCarrito } = useContext(DataContext);
+    let chargeAmount = 0;
+  productosCarrito.map((item) => {
+    chargeAmount = chargeAmount + item.precio;
+  });
+
   const { register, handleSubmit, watch, errors, setValue, reset } = useForm<Inputs>();
   const [token, setToken] = useState<string>("");
   const [error, setError] = useState<string | undefined>(undefined);
@@ -68,7 +76,7 @@ export default function Tarjeta() {
 
           //Check our backend example: https://github.com/MatiMenich/kushki-backend-examples/blob/master/api/cards.js
           axios
-            .post("https://kushki-backend-examples.vercel.app/api/cards", {
+            .post("http://localhost:8080/api/cards", {
               amount: chargeAmount,
               token: response.token,
             })
@@ -77,10 +85,10 @@ export default function Tarjeta() {
               setSuccess(response.data);
             })
             .catch((error) => {
-              if (error.response.data) {
-                setError(error.response.data.message);
+              if (error.response) {
+                setError(error.response.data);
               } else {
-                console.error(error);
+                console.error(error.data.message);
               }
             })
             .finally(() => {
@@ -240,12 +248,7 @@ export default function Tarjeta() {
               >
                 Transacción declinada en solicitud de token
               </button>
-              <button
-                className="option-button"
-                onClick={() => setValues("declined")}
-              >
-                Transacción declinada
-              </button>
+
             </div>
 
             {token && (

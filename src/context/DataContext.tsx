@@ -27,6 +27,14 @@ export const DataProvider = ({ children }: { children: JSX.Element }) => {
     setProductosCarrito([...productosCarrito, producto]);
   };
 
+  const removeItem =( item:Productos )=> {
+    var i = productosCarrito.indexOf( item );
+ 
+    if ( i !== -1 ) {
+        productosCarrito.splice( i, 1 );
+    }
+}
+
   return (
     <DataContext.Provider
       value={{

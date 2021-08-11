@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <Router>
       <div className="container">
-        <h1>EMPRESA ASJ</h1>
+        <h1>EMPRESA FAS</h1>
         <div>
           <ul className="nav">
             <li className="nav-item">
@@ -17,6 +17,7 @@ export const App = () => {
               <Link className="nav-link" to={{pathname:"/carrito", state:[]}}>Carrito</Link>
             </li>
           </ul>
+          <hr />
         </div>
 
 

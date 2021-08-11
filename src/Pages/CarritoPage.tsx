@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
+import Tarjeta from "../components/Tarjeta";
 import { DataContext } from "../context/DataContext";
 
 export const CarritoPage = () => {
-  const { productosCarrito } = useContext(DataContext);
+  const { productosCarrito, setProductos } = useContext(DataContext);
 
   let total = 0;
   productosCarrito.map((item) => {
     total = total + item.precio;
   });
 
-  console.log(total);
+
 
   return (
     <div>
@@ -25,16 +26,18 @@ export const CarritoPage = () => {
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Precio</th>
+ 
                   </tr>
                 </thead>
                 <tbody>
                   {productosCarrito.map((it, index) => {
                     return (
                       <tr key={index}>
-                        <th scope="row">{index}</th>
+                        <th scope="row">{index+1}</th>
                         <td>{it.id}</td>
                         <td>{it.titulo}</td>
                         <td>{it.precio}</td>
+                        
                       </tr>
                     );
                   })}
@@ -50,8 +53,9 @@ export const CarritoPage = () => {
 
           <div className="col">
             <div
-              style={{ backgroundColor: "red", height: 200, width: 200 }}
-            ></div>
+            >
+                {total!=0&&<Tarjeta/>}
+            </div>
           </div>
         </div>
       </div>
